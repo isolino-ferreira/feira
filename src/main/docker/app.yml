@@ -1,0 +1,14 @@
+version: '2'
+services:
+    feira-app:
+        image: feira
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://feira-mysql:3306/feira?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    feira-mysql:
+        extends:
+            file: mysql.yml
+            service: feira-mysql
